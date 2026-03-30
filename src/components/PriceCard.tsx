@@ -12,6 +12,7 @@ interface PriceCardProps {
   includes: string[];
   badge: string | null;
   featured?: boolean;
+  horizontal?: boolean;
 }
 
 export default function PriceCard({
@@ -22,9 +23,89 @@ export default function PriceCard({
   includes,
   badge,
   featured = false,
+  horizontal = false,
 }: PriceCardProps) {
   const whatsappMessage = `Halo Serli, saya ingin booking ${name}. Boleh saya tanya-tanya dulu?`;
   const waUrl = `https://wa.me/6287890536491?text=${encodeURIComponent(whatsappMessage)}`;
+
+  if (horizontal) {
+    return (
+      <motion.div
+        variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+        className="relative flex flex-col sm:flex-row items-start sm:items-center gap-6 rounded-[12px] px-7 py-6 bg-white"
+        style={{
+          border: featured ? "2px solid var(--accent)" : "1px solid var(--border)",
+          boxShadow: featured ? "0 4px 24px rgba(139,34,82,0.10)" : undefined,
+        }}
+      >
+        {badge && (
+          <span
+            className="absolute -top-3.5 left-6 text-xs font-semibold px-4 py-1.5 rounded-full text-white whitespace-nowrap"
+            style={{ backgroundColor: "var(--accent)", fontFamily: "var(--font-sans)" }}
+          >
+            {badge}
+          </span>
+        )}
+
+        {/* Left: name + price */}
+        <div className="shrink-0 sm:w-52">
+          <span
+            className="text-xs font-semibold tracking-[0.18em] uppercase block mb-1"
+            style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+          >
+            {category}
+          </span>
+          <h3
+            className="font-serif italic text-2xl leading-tight mb-2"
+            style={{ color: "var(--text)", fontFamily: "var(--font-serif)" }}
+          >
+            {name}
+          </h3>
+          <div
+            className="text-2xl font-bold"
+            style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
+          >
+            {formatPrice(price)}
+          </div>
+        </div>
+
+        {/* Divider */}
+        <div className="hidden sm:block w-px self-stretch" style={{ backgroundColor: "var(--border)" }} />
+
+        {/* Middle: includes */}
+        <ul className="flex flex-wrap gap-x-6 gap-y-2 flex-1">
+          {includes.map((item, i) => (
+            <li key={i} className="flex items-center gap-2 text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}>
+              <span
+                className="w-4 h-4 rounded-full flex items-center justify-center shrink-0"
+                style={{ backgroundColor: "var(--accent-soft)" }}
+              >
+                <Check size={9} style={{ color: "var(--accent)" }} />
+              </span>
+              {item}
+            </li>
+          ))}
+        </ul>
+
+        {/* Right: CTA */}
+        <a
+          href={waUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="shrink-0 flex items-center gap-2 py-2.5 px-5 rounded-xl text-sm font-semibold transition-opacity hover:opacity-90 whitespace-nowrap"
+          style={{
+            backgroundColor: featured ? "var(--accent)" : "transparent",
+            color: featured ? "white" : "var(--accent)",
+            border: featured ? "none" : "2px solid var(--accent)",
+            fontFamily: "var(--font-sans)",
+          }}
+        >
+          <MessageCircle size={15} />
+          Amankan Tanggalmu
+        </a>
+      </motion.div>
+    );
+  }
 
   return (
     <motion.div
