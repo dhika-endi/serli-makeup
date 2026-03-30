@@ -49,7 +49,7 @@ export default function Navbar() {
         animate={{ y: visible ? 0 : -100 }}
         transition={{ duration: 0.3, ease: "easeInOut" }}
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled ? "bg-white shadow-sm" : "bg-transparent"
+          scrolled ? "bg-white shadow-sm" : "bg-white/80 backdrop-blur-md"
         }`}
       >
         <div className="max-w-[1200px] mx-auto px-6 h-16 flex items-center justify-between">
@@ -77,7 +77,7 @@ export default function Navbar() {
                 href={link.href}
                 className="relative text-sm font-medium transition-colors duration-200 group"
                 style={{
-                  color: pathname === link.href ? "var(--accent)" : scrolled ? "var(--text)" : "white",
+                  color: pathname === link.href ? "var(--accent)" : "var(--text)",
                   fontFamily: "var(--font-sans)",
                 }}
               >
@@ -107,7 +107,7 @@ export default function Navbar() {
           <button
             onClick={() => setMobileOpen(true)}
             className="md:hidden p-2 rounded-lg"
-            style={{ color: scrolled ? "var(--text)" : "white" }}
+            style={{ color: "var(--text)" }}
             aria-label="Buka menu"
           >
             <Menu size={24} />
