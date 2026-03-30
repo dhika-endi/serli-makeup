@@ -117,14 +117,13 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="flex flex-col gap-4"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {services.map((service) => (
               <PriceCard
                 key={service.id}
                 {...service}
                 featured={service.badge !== null}
-                horizontal
               />
             ))}
           </motion.div>
