@@ -99,9 +99,9 @@ export const portfolioImages = [
   { src: "/portfolio/photo-5.jpg", category: "Engagement", alt: "Engagement makeup — close up" },
   { src: "/portfolio/photo-8.jpg", category: "Graduation", alt: "Graduation makeup — wisuda" },
   { src: "/portfolio/photo-3.jpg", category: "Wedding", alt: "Wedding makeup — detail pengantin" },
-  { src: "/portfolio/photo-6.jpg", category: "Engagement", alt: "Engagement makeup — pose elegan" },
   { src: "/portfolio/photo-9.jpg", category: "Graduation", alt: "Graduation makeup — wisuda senyum" },
   { src: "/portfolio/photo-10.jpg", category: "Graduation", alt: "Graduation makeup — wisuda close up" },
+  { src: "/portfolio/photo-6.jpg", category: "Engagement", alt: "Engagement makeup — pose elegan" },
 ];
 
 export const tiktokVideos = [
