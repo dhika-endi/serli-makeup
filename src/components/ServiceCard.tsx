@@ -34,12 +34,6 @@ export default function ServiceCard({ id, category, name, price, includes, badge
       )}
 
       <div className="mb-4">
-        <span
-          className="text-xs font-semibold tracking-widest uppercase"
-          style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
-        >
-          {category}
-        </span>
         <h3
           className="font-serif italic text-2xl mt-1 leading-snug"
           style={{ color: "var(--text)", fontFamily: "var(--font-serif)" }}
