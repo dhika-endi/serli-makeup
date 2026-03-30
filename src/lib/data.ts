@@ -34,17 +34,43 @@ export const services = [
 ];
 
 export const addons = [
-  { name: "Softlens", price: 50000, note: "Konfirmasi paling lambat H-7" },
-  { name: "Hijab styling (selain clean)", price: 25000, note: null },
-  { name: "Homeservice", price: null, note: "Biaya transport menyesuaikan jarak" },
+  {
+    name: "Softlens",
+    price: 40000,
+    note: "Untuk softlens minus, konfirmasi max H-7",
+    includes: [] as string[],
+  },
+  {
+    name: "Hijab Styling",
+    price: 50000,
+    note: null,
+    includes: [
+      "Prewedding look adat (free rent acc)",
+      "Akad syar'i drayperi instan (free rent dryperi instan)",
+    ],
+  },
+  {
+    name: "Press On Nails Premium",
+    price: null,
+    note: "Konfirmasi maksimal H-7",
+    includes: [
+      "Design by request",
+    ],
+  },
+  {
+    name: "Homeservice",
+    price: null,
+    note: "Biaya transport menyesuaikan jarak",
+    includes: [] as string[],
+  },
 ];
 
 export const terms = [
   "Harga belum termasuk biaya transport jika homeservice",
-  "Tambahan softlens Rp 50.000 (konfirmasi paling lambat H-7)",
+  "Tambahan softlens Rp 40.000 (untuk softlens minus, konfirmasi max H-7)",
   "Reschedule H-3 menyesuaikan jadwal owner",
   "Pembatalan sepihak: DP hangus dan tidak dapat dikembalikan",
-  "Hijab selain clean dikenakan charge Rp 25.000",
+  "Hijab styling dikenakan charge Rp 50.000",
   "Pelunasan dilakukan setelah makeup selesai",
 ];
 

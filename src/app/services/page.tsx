@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Plus, Minus } from "lucide-react";
+import { ChevronDown, Plus, Minus, Check } from "lucide-react";
 import { services, addons, terms, formatPrice, brand } from "@/lib/data";
 import PriceCard from "@/components/PriceCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -144,7 +144,7 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-5"
+            className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-5"
           >
             {addons.map((addon, i) => (
               <motion.div
@@ -165,12 +165,27 @@ export default function ServicesPage() {
                 >
                   {addon.price ? formatPrice(addon.price) : "Menyesuaikan"}
                 </div>
+                {addon.includes.length > 0 && (
+                  <ul className="flex flex-col gap-2 mb-3">
+                    {addon.includes.map((item, j) => (
+                      <li key={j} className="flex items-start gap-2 text-sm" style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}>
+                        <span
+                          className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                          style={{ backgroundColor: "var(--accent-soft)" }}
+                        >
+                          <Check size={11} style={{ color: "var(--accent)" }} />
+                        </span>
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                )}
                 {addon.note && (
                   <p
-                    className="text-sm"
+                    className="text-xs"
                     style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
                   >
-                    {addon.note}
+                    * {addon.note}
                   </p>
                 )}
               </motion.div>
