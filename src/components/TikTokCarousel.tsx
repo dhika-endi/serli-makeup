@@ -1,22 +1,21 @@
 "use client";
 
-import { useRef, useState, useCallback } from "react";
+import { useRef, useCallback } from "react";
 import Image from "next/image";
-import { motion, AnimatePresence } from "framer-motion";
-import { ChevronLeft, ChevronRight, Play, X } from "lucide-react";
+import { motion } from "framer-motion";
+import { ChevronLeft, ChevronRight, Play } from "lucide-react";
 import { tiktokVideos } from "@/lib/data";
+import { useState } from "react";
 
 export default function TikTokCarousel() {
   const scrollRef = useRef<HTMLDivElement>(null);
-  const [activeEmbed, setActiveEmbed] = useState<string | null>(null);
+  const [playingId, setPlayingId] = useState<string | null>(null);
 
   const scroll = useCallback((dir: "left" | "right") => {
     if (!scrollRef.current) return;
     const amount = scrollRef.current.clientWidth * 0.75;
     scrollRef.current.scrollBy({ left: dir === "left" ? -amount : amount, behavior: "smooth" });
   }, []);
-
-  const activeVideo = tiktokVideos.find((v) => v.id === activeEmbed);
 
   return (
     <>
@@ -44,40 +43,55 @@ export default function TikTokCarousel() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.4, delay: Math.min(i * 0.07, 0.5) }}
-              className="shrink-0 w-[200px] md:w-[220px] cursor-pointer group"
-              onClick={() => setActiveEmbed(video.id)}
+              className="shrink-0 w-[260px] md:w-[280px]"
             >
-              {/* Thumbnail */}
               <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-gray-100">
-                <Image
-                  src={video.thumb}
-                  alt={video.description}
-                  fill
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
-                  sizes="220px"
-                />
-                {/* Overlay */}
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
-                  style={{ background: "rgba(44,24,16,0.45)" }}
-                >
+                {playingId === video.id ? (
+                  /* Inline embed */
+                  <iframe
+                    src={`https://www.tiktok.com/embed/v2/${video.id}?autoplay=1`}
+                    style={{ width: "100%", height: "100%", border: "none" }}
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen
+                    title={video.description}
+                  />
+                ) : (
+                  /* Thumbnail */
                   <div
-                    className="w-14 h-14 rounded-full flex items-center justify-center"
-                    style={{ backgroundColor: "rgba(255,255,255,0.95)" }}
+                    className="relative w-full h-full cursor-pointer group"
+                    onClick={() => setPlayingId(video.id)}
                   >
-                    <Play size={22} fill="var(--accent)" style={{ color: "var(--accent)", marginLeft: 2 }} />
+                    <Image
+                      src={video.thumb}
+                      alt={video.description}
+                      fill
+                      className="object-cover transition-transform duration-500 group-hover:scale-105"
+                      sizes="280px"
+                    />
+                    {/* Overlay */}
+                    <div
+                      className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center"
+                      style={{ background: "rgba(44,24,16,0.45)" }}
+                    >
+                      <div
+                        className="w-16 h-16 rounded-full flex items-center justify-center"
+                        style={{ backgroundColor: "rgba(255,255,255,0.95)" }}
+                      >
+                        <Play size={26} fill="var(--accent)" style={{ color: "var(--accent)", marginLeft: 3 }} />
+                      </div>
+                    </div>
+                    {/* TikTok badge */}
+                    <div className="absolute top-2 left-2">
+                      <span
+                        className="flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full text-white"
+                        style={{ backgroundColor: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
+                      >
+                        <TikTokIcon size={11} />
+                        TikTok
+                      </span>
+                    </div>
                   </div>
-                </div>
-                {/* TikTok badge */}
-                <div className="absolute top-2 left-2">
-                  <span
-                    className="flex items-center gap-1 text-xs font-semibold px-2 py-0.5 rounded-full text-white"
-                    style={{ backgroundColor: "rgba(0,0,0,0.55)", backdropFilter: "blur(4px)" }}
-                  >
-                    <TikTokIcon size={11} />
-                    TikTok
-                  </span>
-                </div>
+                )}
               </div>
 
               {/* Caption */}
@@ -115,49 +129,6 @@ export default function TikTokCarousel() {
           @serliiim_ di TikTok
         </a>
       </div>
-
-      {/* Embed Modal */}
-      <AnimatePresence>
-        {activeEmbed && activeVideo && (
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4"
-            onClick={() => setActiveEmbed(null)}
-          >
-            <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
-              transition={{ duration: 0.2 }}
-              onClick={(e) => e.stopPropagation()}
-              className="relative"
-              style={{ width: 390, maxWidth: "95vw" }}
-            >
-              {/* Close */}
-              <button
-                onClick={() => setActiveEmbed(null)}
-                className="absolute -top-10 right-0 w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white hover:bg-white/25 transition-colors"
-                aria-label="Tutup"
-              >
-                <X size={16} />
-              </button>
-
-              {/* TikTok embed — clip caption section at bottom */}
-              <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "9/16", width: "100%", position: "relative" }}>
-                <iframe
-                  src={`https://www.tiktok.com/embed/v2/${activeEmbed}`}
-                  style={{ width: "100%", height: "135%", border: "none", position: "absolute", top: 0 }}
-                  allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                  allowFullScreen
-                  title={activeVideo.description}
-                />
-              </div>
-            </motion.div>
-          </motion.div>
-        )}
-      </AnimatePresence>
     </>
   );
 }
