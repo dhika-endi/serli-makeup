@@ -3,10 +3,75 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { Plus, Minus, Check } from "lucide-react";
+import { Plus, Minus, Check, MessageCircle } from "lucide-react";
 import { services, addons, terms, formatPrice, brand } from "@/lib/data";
 import PriceCard from "@/components/PriceCard";
 import SectionHeading from "@/components/SectionHeading";
+
+function FeaturedPriceCard({ name, category, price, includes, badge }: { name: string; category: string; price: number; includes: string[]; badge: string | null }) {
+  const whatsappMessage = `Halo Serli, saya ingin booking ${name}. Boleh saya tanya-tanya dulu?`;
+  const waUrl = `https://wa.me/6287890536491?text=${encodeURIComponent(whatsappMessage)}`;
+  return (
+    <div
+      className="rounded-[16px] p-8 flex flex-col"
+      style={{ backgroundColor: "var(--accent)" }}
+    >
+      {badge && (
+        <span
+          className="self-start text-xs font-semibold px-3 py-1 rounded-full mb-5"
+          style={{ backgroundColor: "rgba(255,255,255,0.2)", color: "white", fontFamily: "var(--font-sans)" }}
+        >
+          {badge}
+        </span>
+      )}
+      <span
+        className="text-xs font-semibold tracking-[0.2em] uppercase mb-1"
+        style={{ color: "rgba(255,255,255,0.65)", fontFamily: "var(--font-sans)" }}
+      >
+        {category}
+      </span>
+      <h3
+        className="font-serif italic text-3xl leading-snug mb-3 text-white"
+        style={{ fontFamily: "var(--font-serif)" }}
+      >
+        {name}
+      </h3>
+      <div
+        className="text-4xl font-bold mb-6 text-white"
+        style={{ fontFamily: "var(--font-sans)" }}
+      >
+        {formatPrice(price)}
+      </div>
+
+      <div className="w-full h-px mb-6" style={{ backgroundColor: "rgba(255,255,255,0.2)" }} />
+
+      <ul className="flex flex-col gap-3 mb-8 flex-1">
+        {includes.map((item, i) => (
+          <li key={i} className="flex items-start gap-3 text-sm text-white" style={{ fontFamily: "var(--font-sans)" }}>
+            <span
+              className="mt-0.5 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+              style={{ backgroundColor: "rgba(255,255,255,0.2)" }}
+            >
+              <Check size={11} color="white" />
+            </span>
+            {item}
+          </li>
+        ))}
+      </ul>
+
+      <a
+        href={waUrl}
+        target="_blank"
+        rel="noopener noreferrer"
+        className="flex items-center justify-center gap-2 py-3.5 px-6 rounded-xl text-sm font-semibold transition-opacity hover:opacity-90"
+        style={{ backgroundColor: "white", color: "var(--accent)", fontFamily: "var(--font-sans)" }}
+      >
+        <MessageCircle size={16} />
+        Amankan Tanggalmu
+      </a>
+    </div>
+  );
+}
 
 function AccordionItem({ text, index }: { text: string; index: number }) {
   const [open, setOpen] = useState(false);
@@ -112,21 +177,35 @@ export default function ServicesPage() {
       {/* Pricing Cards */}
       <section className="py-20 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-[1200px] mx-auto">
-          <motion.div
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
-          >
-            {services.map((service) => (
-              <PriceCard
-                key={service.id}
-                {...service}
-                featured={service.badge !== null}
-              />
-            ))}
-          </motion.div>
+          <div className="flex flex-col lg:flex-row gap-6 items-start">
+
+            {/* Left: regular packages */}
+            <motion.div
+              variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true, margin: "-80px" }}
+              className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5"
+            >
+              {services.filter((s) => s.badge === null).map((service) => (
+                <PriceCard key={service.id} {...service} featured={false} />
+              ))}
+            </motion.div>
+
+            {/* Right: featured package (Paket Gold) */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="lg:sticky lg:top-24 w-full lg:w-[340px] shrink-0"
+            >
+              {services.filter((s) => s.badge !== null).map((service) => (
+                <FeaturedPriceCard key={service.id} {...service} />
+              ))}
+            </motion.div>
+
+          </div>
         </div>
       </section>
 
