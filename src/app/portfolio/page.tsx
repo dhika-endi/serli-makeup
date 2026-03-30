@@ -1,15 +1,11 @@
 "use client";
 
-import { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { portfolioImages } from "@/lib/data";
 import PortfolioGrid from "@/components/PortfolioGrid";
 
-const categories = ["Semua", "Wedding", "Prewedding", "Engagement", "Graduation"];
-
 export default function PortfolioPage() {
-  const [activeFilter, setActiveFilter] = useState("Semua");
 
   return (
     <>
@@ -51,31 +47,7 @@ export default function PortfolioPage() {
       {/* Portfolio */}
       <section className="py-16 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-[1200px] mx-auto">
-          {/* Filter Tabs */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.2 }}
-            className="flex flex-wrap gap-2 mb-10"
-          >
-            {categories.map((cat) => (
-              <button
-                key={cat}
-                onClick={() => setActiveFilter(cat)}
-                className="px-5 py-2 rounded-full text-sm font-medium transition-all duration-200"
-                style={{
-                  backgroundColor: activeFilter === cat ? "var(--accent)" : "transparent",
-                  color: activeFilter === cat ? "white" : "var(--text-muted)",
-                  border: activeFilter === cat ? "1px solid var(--accent)" : "1px solid var(--border)",
-                  fontFamily: "var(--font-sans)",
-                }}
-              >
-                {cat}
-              </button>
-            ))}
-          </motion.div>
-
-          <PortfolioGrid images={portfolioImages} filter={activeFilter} />
+          <PortfolioGrid images={portfolioImages} filter="Semua" />
         </div>
       </section>
     </>
