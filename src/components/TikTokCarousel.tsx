@@ -123,32 +123,32 @@ export default function TikTokCarousel() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 flex items-center justify-center bg-black/80 px-4"
+            className="fixed inset-0 z-50 flex items-center justify-center bg-black"
             onClick={() => setActiveEmbed(null)}
           >
             <motion.div
-              initial={{ scale: 0.92, opacity: 0 }}
+              initial={{ scale: 0.95, opacity: 0 }}
               animate={{ scale: 1, opacity: 1 }}
-              exit={{ scale: 0.92, opacity: 0 }}
+              exit={{ scale: 0.95, opacity: 0 }}
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
-              className="relative"
-              style={{ width: 390, maxWidth: "95vw" }}
+              className="relative rounded-2xl overflow-hidden shadow-2xl"
+              style={{ width: 360, maxWidth: "100vw", maxHeight: "100dvh", aspectRatio: "9/16" }}
             >
               {/* Close */}
               <button
                 onClick={() => setActiveEmbed(null)}
-                className="absolute -top-10 right-0 w-8 h-8 rounded-full bg-white/15 flex items-center justify-center text-white hover:bg-white/25 transition-colors"
+                className="absolute top-3 right-3 z-10 w-8 h-8 rounded-full bg-black/40 flex items-center justify-center text-white hover:bg-black/60 transition-colors backdrop-blur-sm"
                 aria-label="Tutup"
               >
                 <X size={16} />
               </button>
 
-              {/* TikTok embed — clip caption section at bottom */}
-              <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "9/16", width: "100%", position: "relative" }}>
+              {/* TikTok embed — clip TikTok UI, show only video */}
+              <div style={{ width: "100%", height: "100%", position: "relative", overflow: "hidden" }}>
                 <iframe
-                  src={`https://www.tiktok.com/embed/v2/${activeEmbed}`}
-                  style={{ width: "100%", height: "135%", border: "none", position: "absolute", top: 0 }}
+                  src={`https://www.tiktok.com/embed/v2/${activeEmbed}?autoplay=1`}
+                  style={{ width: "180%", height: "130%", border: "none", position: "absolute", top: 0, left: "-40%" }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title={activeVideo.description}
