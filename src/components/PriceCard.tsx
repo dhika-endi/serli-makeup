@@ -24,7 +24,7 @@ export default function PriceCard({
   featured = false,
 }: PriceCardProps) {
   const whatsappMessage = `Halo Serli, saya ingin booking ${name}. Boleh saya tanya-tanya dulu?`;
-  const waUrl = `https://wa.me/628789053649?text=${encodeURIComponent(whatsappMessage)}`;
+  const waUrl = `https://wa.me/6287890536491?text=${encodeURIComponent(whatsappMessage)}`;
 
   return (
     <motion.div

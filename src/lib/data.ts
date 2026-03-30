@@ -62,7 +62,7 @@ export const brand = {
   nameFull: "Serli Marselina Makeup",
   tagline: "Tampil Cantik di Momen Terbaik Hidupmu",
   subTagline: "Jasa Makeup Artist Profesional — Purwokerto & Sekitarnya",
-  whatsapp: "628789053649",
+  whatsapp: "6287890536491",
   whatsappDisplay: "0878-9053-6491",
   whatsappMessage: "Halo Serli, saya tertarik dengan layanan makeup Anda. Boleh saya tanya-tanya dulu?",
   instagram: "serlimarselina.makeup",
