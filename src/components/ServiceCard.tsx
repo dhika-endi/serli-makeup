@@ -80,7 +80,7 @@ export default function ServiceCard({ id, category, name, price, includes, badge
         }}
       >
         <MessageCircle size={15} />
-        Book via WhatsApp
+        Amankan Tanggalmu
       </a>
     </motion.div>
   );

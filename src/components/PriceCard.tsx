@@ -97,7 +97,7 @@ export default function PriceCard({
         }}
       >
         <MessageCircle size={16} />
-        Book via WhatsApp
+        Amankan Tanggalmu
       </a>
     </motion.div>
   );
