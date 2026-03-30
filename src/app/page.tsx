@@ -11,8 +11,9 @@ import {
   Clock,
   Users,
   MapPin,
+  Check,
 } from "lucide-react";
-import { brand, services, portfolioImages, testimonials } from "@/lib/data";
+import { brand, services, addons, portfolioImages, testimonials, formatPrice } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import TestimonialCard from "@/components/TestimonialCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -169,6 +170,65 @@ export default function HomePage() {
               <ServiceCard key={service.id} {...service} />
             ))}
           </motion.div>
+
+          {/* Add-ons subsection */}
+          <div className="mt-14">
+            <p
+              className="text-xs font-semibold tracking-[0.2em] uppercase mb-5 text-center"
+              style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
+            >
+              Layanan Tambahan
+            </p>
+            <motion.div
+              variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="grid grid-cols-1 sm:grid-cols-3 gap-4"
+            >
+              {addons.map((addon, i) => (
+                <motion.div
+                  key={i}
+                  variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                  className="p-5 rounded-[12px] border bg-white"
+                  style={{ borderColor: "var(--border)" }}
+                >
+                  <h4
+                    className="font-semibold text-base mb-1.5"
+                    style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}
+                  >
+                    {addon.name}
+                  </h4>
+                  <div
+                    className="text-xl font-bold mb-3"
+                    style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
+                  >
+                    {addon.price ? formatPrice(addon.price) : "Menyesuaikan"}
+                  </div>
+                  {addon.includes.length > 0 && (
+                    <ul className="flex flex-col gap-1.5 mb-2">
+                      {addon.includes.map((item, j) => (
+                        <li key={j} className="flex items-start gap-2 text-xs" style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}>
+                          <span
+                            className="mt-0.5 w-4 h-4 rounded-full flex items-center justify-center shrink-0"
+                            style={{ backgroundColor: "var(--accent-soft)" }}
+                          >
+                            <Check size={9} style={{ color: "var(--accent)" }} />
+                          </span>
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  )}
+                  {addon.note && (
+                    <p className="text-xs" style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}>
+                      * {addon.note}
+                    </p>
+                  )}
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
         </div>
       </section>
 
