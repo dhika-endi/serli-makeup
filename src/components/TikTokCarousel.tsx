@@ -144,11 +144,11 @@ export default function TikTokCarousel() {
                 <X size={16} />
               </button>
 
-              {/* TikTok embed */}
-              <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "9/16", width: "100%" }}>
+              {/* TikTok embed — clip caption section at bottom */}
+              <div className="rounded-xl overflow-hidden" style={{ aspectRatio: "9/16", width: "100%", position: "relative" }}>
                 <iframe
                   src={`https://www.tiktok.com/embed/v2/${activeEmbed}`}
-                  style={{ width: "100%", height: "100%", border: "none" }}
+                  style={{ width: "100%", height: "135%", border: "none", position: "absolute", top: 0 }}
                   allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                   allowFullScreen
                   title={activeVideo.description}
