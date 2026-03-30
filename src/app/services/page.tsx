@@ -3,7 +3,7 @@
 import { useState } from "react";
 import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
-import { ChevronDown, Plus, Minus, Check } from "lucide-react";
+import { Plus, Minus, Check } from "lucide-react";
 import { services, addons, terms, formatPrice, brand } from "@/lib/data";
 import PriceCard from "@/components/PriceCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -117,7 +117,7 @@ export default function ServicesPage() {
             initial="hidden"
             whileInView="visible"
             viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6"
           >
             {services.map((service) => (
               <PriceCard
