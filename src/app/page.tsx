@@ -159,19 +159,32 @@ export default function HomePage() {
             center
           />
 
-          <div className="flex gap-5 overflow-x-auto pb-2" style={{ scrollbarWidth: "none" }}>
-            {services.map((service, i) => (
-              <motion.div
-                key={service.id}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.4, delay: Math.min(i * 0.08, 0.4) }}
-                className="shrink-0 w-[280px]"
-              >
-                <ServiceCard {...service} />
-              </motion.div>
-            ))}
+          <div className="flex flex-col lg:flex-row gap-6 items-start">
+            {/* Regular packages — 2x2 grid */}
+            <motion.div
+              variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+              initial="hidden"
+              whileInView="visible"
+              viewport={{ once: true }}
+              className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5"
+            >
+              {services.filter((s) => s.badge === null).map((service) => (
+                <ServiceCard key={service.id} {...service} />
+              ))}
+            </motion.div>
+
+            {/* Featured package */}
+            <motion.div
+              initial={{ opacity: 0, y: 24 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.2 }}
+              className="w-full lg:w-[320px] shrink-0"
+            >
+              {services.filter((s) => s.badge !== null).map((service) => (
+                <ServiceCard key={service.id} {...service} />
+              ))}
+            </motion.div>
           </div>
 
           {/* Add-ons subsection */}
