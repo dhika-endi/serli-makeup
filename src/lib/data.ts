@@ -57,12 +57,6 @@ export const addons = [
       "Design by request",
     ],
   },
-  {
-    name: "Homeservice",
-    price: null,
-    note: "Biaya transport menyesuaikan jarak",
-    includes: [] as string[],
-  },
 ];
 
 export const terms = [
