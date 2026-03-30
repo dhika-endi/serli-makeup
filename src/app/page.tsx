@@ -77,7 +77,7 @@ export default function HomePage() {
               className="text-xs tracking-[0.28em] uppercase font-semibold block mb-4"
               style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
             >
-              ✦ Makeup Artist Profesional
+              ✦ Makeup Artist
             </motion.span>
 
             <motion.h1
@@ -101,7 +101,7 @@ export default function HomePage() {
               className="text-base md:text-lg mb-8 leading-relaxed max-w-sm"
               style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
             >
-              {brand.subTagline}
+              Jasa Makeup Artist Purwokerto & Sekitarnya
             </motion.p>
 
             <motion.div
@@ -133,34 +133,6 @@ export default function HomePage() {
               </Link>
             </motion.div>
 
-            {/* Trust signals */}
-            <motion.div
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5, delay: 0.9 }}
-              className="mt-10 flex items-center gap-6"
-            >
-              {[
-                { value: "4+", label: "Tahun Pengalaman" },
-                { value: "500+", label: "Klien Puas" },
-                { value: "★ 5.0", label: "Rating" },
-              ].map((stat) => (
-                <div key={stat.label}>
-                  <div
-                    className="font-bold text-lg leading-none"
-                    style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
-                  >
-                    {stat.value}
-                  </div>
-                  <div
-                    className="text-xs mt-0.5"
-                    style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
-                  >
-                    {stat.label}
-                  </div>
-                </div>
-              ))}
-            </motion.div>
 
           </div>
         </div>
