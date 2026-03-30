@@ -1,0 +1,158 @@
+export const services = [
+  {
+    id: "graduation",
+    category: "Wisuda",
+    name: "Graduation Makeup",
+    price: 250000,
+    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab", "Free pemasangan toga"],
+    badge: null,
+  },
+  {
+    id: "engagement",
+    category: "Lamaran",
+    name: "Engagement Makeup",
+    price: 275000,
+    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    badge: null,
+  },
+  {
+    id: "prewedding",
+    category: "Foto Prewed",
+    name: "Prewedding Makeup",
+    price: 300000,
+    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    badge: null,
+  },
+  {
+    id: "wedding",
+    category: "Pernikahan",
+    name: "Wedding Makeup",
+    price: 700000,
+    includes: ["Makeup only", "Untuk hari H pernikahan"],
+    badge: "Paket Spesial",
+  },
+];
+
+export const addons = [
+  { name: "Softlens", price: 50000, note: "Konfirmasi paling lambat H-7" },
+  { name: "Hijab styling (selain clean)", price: 25000, note: null },
+  { name: "Homeservice", price: null, note: "Biaya transport menyesuaikan jarak" },
+];
+
+export const terms = [
+  "Harga belum termasuk biaya transport jika homeservice",
+  "Tambahan softlens Rp 50.000 (konfirmasi paling lambat H-7)",
+  "Reschedule H-3 menyesuaikan jadwal owner",
+  "Pembatalan sepihak: DP hangus dan tidak dapat dikembalikan",
+  "Hijab selain clean dikenakan charge Rp 25.000",
+  "Pelunasan dilakukan setelah makeup selesai",
+];
+
+export const testimonials = [
+  { name: "Rizki A.", service: "Wedding Makeup", rating: 5, quote: "Hasilnya natural tapi tetap glam, semua tamu bilang cantik! Serli sabar dan profesional banget." },
+  { name: "Dina S.", service: "Graduation Makeup", rating: 5, quote: "Makeup-nya tahan dari pagi sampai malam, recommended banget untuk wisuda!" },
+  { name: "Annisa P.", service: "Engagement Makeup", rating: 5, quote: "Serli detail banget, hasilnya melebihi ekspektasi. Puas banget!" },
+  { name: "Hana W.", service: "Prewedding Makeup", rating: 5, quote: "Cocok banget buat foto outdoor, warnanya pas dan fotonya jadi cantik semua." },
+  { name: "Mila R.", service: "Wedding Makeup", rating: 5, quote: "Sudah 2 kali booking Serli, selalu memuaskan. Wajib coba!" },
+  { name: "Sari N.", service: "Graduation Makeup", rating: 5, quote: "Orangnya ramah, hasil makeupnya rapi dan bersih. Worth it banget." },
+];
+
+export const brand = {
+  name: "Serli Marselina",
+  nameFull: "Serli Marselina Makeup",
+  tagline: "Tampil Cantik di Momen Terbaik Hidupmu",
+  subTagline: "Jasa Makeup Artist Profesional — Purwokerto & Sekitarnya",
+  whatsapp: "628789053649",
+  whatsappDisplay: "0878-9053-6491",
+  whatsappMessage: "Halo Serli, saya tertarik dengan layanan makeup Anda. Boleh saya tanya-tanya dulu?",
+  instagram: "serlimarselina.makeup",
+  instagramUrl: "https://instagram.com/serlimarselina.makeup",
+  location: "Perum Emerald Village 2, Ciberem, Sumbang, Banyumas",
+  areas: ["Purwokerto", "Banyumas", "Sumbang", "Cilacap", "Kebumen", "Purbalingga"],
+};
+
+export const portfolioImages = [
+  { src: "/portfolio/photo-1.jpg", category: "Wedding", alt: "Wedding makeup — kebaya merah" },
+  { src: "/portfolio/photo-4.jpg", category: "Engagement", alt: "Engagement makeup — kebaya biru" },
+  { src: "/portfolio/photo-7.jpg", category: "Graduation", alt: "Graduation makeup — wisuda cumlaude" },
+  { src: "/portfolio/photo-2.jpg", category: "Wedding", alt: "Wedding makeup — pengantin merah" },
+  { src: "/portfolio/photo-5.jpg", category: "Engagement", alt: "Engagement makeup — close up" },
+  { src: "/portfolio/photo-8.jpg", category: "Graduation", alt: "Graduation makeup — wisuda" },
+  { src: "/portfolio/photo-3.jpg", category: "Wedding", alt: "Wedding makeup — detail pengantin" },
+  { src: "/portfolio/photo-6.jpg", category: "Engagement", alt: "Engagement makeup — pose elegan" },
+  { src: "/portfolio/photo-9.jpg", category: "Graduation", alt: "Graduation makeup — wisuda senyum" },
+  { src: "/portfolio/photo-10.jpg", category: "Graduation", alt: "Graduation makeup — wisuda close up" },
+  { src: "/portfolio/photo-11.jpg", category: "Graduation", alt: "Graduation makeup — wisuda pose" },
+  { src: "/portfolio/photo-12.jpg", category: "Graduation", alt: "Graduation makeup — wisuda cantik" },
+];
+
+export const tiktokVideos = [
+  {
+    id: "7589271847665945877",
+    description: "Aamiin.. #muapurwokerto #muapwt #bismillah",
+    thumb: "/tiktok/thumb-7589271847665945877.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7589271847665945877",
+  },
+  {
+    id: "7586566619145587989",
+    description: "Wedding Makeup 🤍 #makeupwedding #soloputrihijab #makeuppurwokerto",
+    thumb: "/tiktok/thumb-7586566619145587989.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7586566619145587989",
+  },
+  {
+    id: "7586560026169445652",
+    description: "2 jam untuk 1 menit ++ 😮‍💨 #tutorialmakeup #stepbystepmakeup #makeupakad",
+    thumb: "/tiktok/thumb-7586560026169445652.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7586560026169445652",
+  },
+  {
+    id: "7585498436703685909",
+    description: "Akad Makeup ✨ #muapurwokerto #makeupakadpurwokerto #makeupweddingpurwokerto",
+    thumb: "/tiktok/thumb-7585498436703685909.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7585498436703685909",
+  },
+  {
+    id: "7580544226488798484",
+    description: "Prewedding Look 💕 #makeuppreweddingpurwokerto #preweddingpurwokerto",
+    thumb: "/tiktok/thumb-7580544226488798484.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7580544226488798484",
+  },
+  {
+    id: "7579639364687367444",
+    description: "Hampir semua lokal brand 🥹🫶 #bersih #kuasmakeup #muapurwokerto",
+    thumb: "/tiktok/thumb-7579639364687367444.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7579639364687367444",
+  },
+  {
+    id: "7579504569084939540",
+    description: "Flawless Makeup ✨ #muapurwokerto #muapwt #makeupflawless #muabanyumas",
+    thumb: "/tiktok/thumb-7579504569084939540.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7579504569084939540",
+  },
+  {
+    id: "7577379100147584277",
+    description: "Wisuda Makeup 🎓 #makeupwisudapurwokerto #wisudapurwokerto #muabanyumas",
+    thumb: "/tiktok/thumb-7577379100147584277.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7577379100147584277",
+  },
+  {
+    id: "7577027791456128277",
+    description: "🤭🤭 #muapurwokerto #makeuppurwokerto #muapwt #muapurbalingga",
+    thumb: "/tiktok/thumb-7577027791456128277.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7577027791456128277",
+  },
+  {
+    id: "7561317018150898956",
+    description: "Akad Syar'i look 💗 #muapurwokerto #muapwt #makeuppurwokerto",
+    thumb: "/tiktok/thumb-7561317018150898956.jpg",
+    url: "https://www.tiktok.com/@serliiim_/video/7561317018150898956",
+  },
+];
+
+export const formatPrice = (price: number) => {
+  return new Intl.NumberFormat("id-ID", {
+    style: "currency",
+    currency: "IDR",
+    minimumFractionDigits: 0,
+  }).format(price);
+};
