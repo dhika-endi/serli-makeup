@@ -347,8 +347,8 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 5: ABOUT PREVIEW ────────────────────────── */}
-      <section className="py-24 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
+      {/* ─── SECTION 5: ABOUT PREVIEW (hidden) ──────────────── */}
+      {false && <section className="py-24 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
         <div className="max-w-[1200px] mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
             {/* Image */}
@@ -437,7 +437,7 @@ export default function HomePage() {
             </motion.div>
           </div>
         </div>
-      </section>
+      </section>}
 
       {/* ─── SECTION 6: BOOKING CTA ──────────────────────────── */}
       <section
