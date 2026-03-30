@@ -11,9 +11,10 @@ interface ServiceCardProps {
   price: number;
   includes: string[];
   badge: string | null;
+  fullHeight?: boolean;
 }
 
-export default function ServiceCard({ id, category, name, price, includes, badge }: ServiceCardProps) {
+export default function ServiceCard({ id, category, name, price, includes, badge, fullHeight }: ServiceCardProps) {
   const whatsappMessage = `Halo Serli, saya ingin booking ${name}. Boleh saya tanya-tanya dulu?`;
   const waUrl = `https://wa.me/6287890536491?text=${encodeURIComponent(whatsappMessage)}`;
   const featured = badge !== null;
@@ -24,7 +25,7 @@ export default function ServiceCard({ id, category, name, price, includes, badge
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
       }}
-      className="relative flex flex-col rounded-[12px] p-8"
+      className={`relative flex flex-col rounded-[12px] p-8${fullHeight ? " h-full" : ""}`}
       style={{
         backgroundColor: featured ? "var(--accent)" : "white",
         border: featured ? "none" : "1px solid var(--border)",

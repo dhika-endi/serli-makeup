@@ -159,7 +159,7 @@ export default function HomePage() {
             center
           />
 
-          <div className="flex flex-col lg:flex-row gap-6 items-start">
+          <div className="flex flex-col lg:flex-row gap-6 items-stretch">
             {/* Regular packages — 2x2 grid */}
             <motion.div
               variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
@@ -179,10 +179,10 @@ export default function HomePage() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-full lg:w-[320px] shrink-0"
+              className="w-full lg:w-[320px] shrink-0 flex flex-col"
             >
               {services.filter((s) => s.badge !== null).map((service) => (
-                <ServiceCard key={service.id} {...service} />
+                <ServiceCard key={service.id} {...service} fullHeight />
               ))}
             </motion.div>
           </div>
