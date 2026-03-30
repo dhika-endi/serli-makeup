@@ -133,7 +133,7 @@ export default function TikTokCarousel() {
               transition={{ duration: 0.2 }}
               onClick={(e) => e.stopPropagation()}
               className="relative"
-              style={{ width: 340, maxWidth: "95vw" }}
+              style={{ width: 390, maxWidth: "95vw" }}
             >
               {/* Close */}
               <button
@@ -154,18 +154,6 @@ export default function TikTokCarousel() {
                   title={activeVideo.description}
                 />
               </div>
-
-              {/* Open in TikTok */}
-              <a
-                href={activeVideo.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="mt-3 flex items-center justify-center gap-2 w-full py-2.5 rounded-xl text-sm font-medium text-white transition-opacity hover:opacity-90"
-                style={{ backgroundColor: "var(--accent)", fontFamily: "var(--font-sans)" }}
-              >
-                <TikTokIcon size={14} />
-                Buka di TikTok
-              </a>
             </motion.div>
           </motion.div>
         )}
