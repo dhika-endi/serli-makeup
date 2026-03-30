@@ -102,8 +102,6 @@ export const portfolioImages = [
   { src: "/portfolio/photo-6.jpg", category: "Engagement", alt: "Engagement makeup — pose elegan" },
   { src: "/portfolio/photo-9.jpg", category: "Graduation", alt: "Graduation makeup — wisuda senyum" },
   { src: "/portfolio/photo-10.jpg", category: "Graduation", alt: "Graduation makeup — wisuda close up" },
-  { src: "/portfolio/photo-11.jpg", category: "Graduation", alt: "Graduation makeup — wisuda pose" },
-  { src: "/portfolio/photo-12.jpg", category: "Graduation", alt: "Graduation makeup — wisuda cantik" },
 ];
 
 export const tiktokVideos = [
