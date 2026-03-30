@@ -47,14 +47,16 @@ export default function TikTokCarousel() {
             >
               <div className="relative w-full aspect-[9/16] rounded-xl overflow-hidden bg-gray-100">
                 {playingId === video.id ? (
-                  /* Inline embed */
-                  <iframe
-                    src={`https://www.tiktok.com/embed/v2/${video.id}?autoplay=1`}
-                    style={{ width: "100%", height: "100%", border: "none" }}
-                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                    allowFullScreen
-                    title={video.description}
-                  />
+                  /* Inline embed — clip profile header and related videos */
+                  <div style={{ position: "absolute", inset: 0, overflow: "hidden" }}>
+                    <iframe
+                      src={`https://www.tiktok.com/embed/v2/${video.id}?autoplay=1`}
+                      style={{ width: "100%", height: "145%", border: "none", position: "absolute", top: "-14%" }}
+                      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                      allowFullScreen
+                      title={video.description}
+                    />
+                  </div>
                 ) : (
                   /* Thumbnail */
                   <div
