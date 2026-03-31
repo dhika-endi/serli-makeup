@@ -26,7 +26,7 @@ export const services = [
   {
     id: "wedding-silver",
     category: "Akad Nikah",
-    name: "Paket Silver",
+    name: "Wedding Makeup",
     price: 800000,
     includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do"],
     badge: null,
@@ -34,7 +34,7 @@ export const services = [
   {
     id: "wedding-gold",
     category: "Akad Nikah",
-    name: "Paket Gold",
+    name: "Wedding Makeup",
     price: 1300000,
     includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do", "Rent attire akad 1x", "Hena art", "Free rent acc solo putri"],
     badge: "Paket Spesial",
