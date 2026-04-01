@@ -30,6 +30,21 @@ export const services = [
     price: 275000,
     includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
     badge: null,
+    expandablePackage: {
+      name: "Engagement Package",
+      price: 750000,
+      includes: ["Makeup by request", "Fake lashes 3D", "Free clean hijab"],
+      includes2: {
+        label: "Decoration by Keidecoration.id",
+        items: ["Dekor 2–3 meter", "Kursi 2 pcs", "Handbouquet", "Ringbox", "Welcome sign"],
+      },
+      notes: [
+        "Free transport area Purwokerto Kota",
+        "Lock tanggal = DP",
+        "Softlens +Rp 40.000",
+        "Cancel: DP hangus / tidak dapat dikembalikan",
+      ],
+    },
   },
   {
     id: "prewedding",
