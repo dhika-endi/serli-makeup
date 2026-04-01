@@ -13,11 +13,11 @@ import {
   MapPin,
   Check,
 } from "lucide-react";
-import { brand, services, addons, portfolioImages, testimonials, formatPrice } from "@/lib/data";
+import { brand, services, addons, portfolioImages, formatPrice } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
-import TestimonialCard from "@/components/TestimonialCard";
 import SectionHeading from "@/components/SectionHeading";
 import TikTokCarousel from "@/components/TikTokCarousel";
+import TestimonialImageCarousel from "@/components/TestimonialImageCarousel";
 
 const fadeInUp = {
   initial: { opacity: 0, y: 30 },
@@ -42,8 +42,7 @@ export default function HomePage() {
             alt="Wedding Makeup by Serli Marselina"
             fill
             priority
-            className="object-cover"
-            style={{ objectPosition: "50% 10%" }}
+            className="object-cover object-[50%_60%] md:object-[50%_10%]"
             sizes="(max-width: 768px) 100vw, 58vw"
           />
           {/* Desktop: horizontal gradient left→transparent */}
@@ -69,7 +68,7 @@ export default function HomePage() {
           className="relative z-10 max-w-[1200px] mx-auto px-6 md:px-12 flex items-center"
           style={{ minHeight: "100svh" }}
         >
-          <div className="w-full md:w-[50%] pt-[65vw] pb-16 md:pt-0 md:pb-0">
+          <div className="w-full md:w-[50%] pt-[80vw] pb-16 md:pt-0 md:pb-0">
 
             <motion.span
               initial={{ opacity: 0, y: 16 }}
@@ -333,17 +332,7 @@ export default function HomePage() {
             center
           />
 
-          <motion.div
-            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-80px" }}
-            className="grid grid-cols-1 md:grid-cols-3 gap-6"
-          >
-            {testimonials.slice(0, 3).map((t, i) => (
-              <TestimonialCard key={i} {...t} />
-            ))}
-          </motion.div>
+          <TestimonialImageCarousel />
 
           <motion.div
             initial={{ opacity: 0 }}
@@ -454,6 +443,64 @@ export default function HomePage() {
           </div>
         </div>
       </section>}
+
+      {/* ─── SECTION 5b: BRAND LOGOS ─────────────────────────── */}
+      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
+        <div className="max-w-[1200px] mx-auto">
+          <SectionHeading
+            label="Produk Pilihan"
+            title="Brand yang Kami Gunakan"
+            subtitle="Serli menggunakan produk-produk makeup berkualitas tinggi untuk hasil yang tahan lama dan memukau."
+            center
+          />
+
+          <motion.div
+            variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
+          >
+            {[
+              "/brand/quality_restoration_20260401081945467 1.png",
+              "/brand/quality_restoration_20260401082139337 1.png",
+              "/brand/quality_restoration_20260401082447678 1.png",
+              "/brand/quality_restoration_20260401082544086 1.png",
+              "/brand/quality_restoration_20260401082747574 1.png",
+              "/brand/quality_restoration_20260401082809209 1.png",
+              "/brand/quality_restoration_20260401082955521 1.png",
+              "/brand/quality_restoration_20260401083100917 1.png",
+              "/brand/quality_restoration_20260401083252332 2.png",
+              "/brand/quality_restoration_20260401083515353 1.png",
+              "/brand/quality_restoration_20260401083623380 1.png",
+              "/brand/quality_restoration_20260401083721841 1.png",
+              "/brand/quality_restoration_20260401083837932 1.png",
+              "/brand/quality_restoration_20260401084018070 1.png",
+              "/brand/quality_restoration_20260401084157812 1.png",
+              "/brand/quality_restoration_20260401084355452 1.png",
+              "/brand/quality_restoration_20260401084520869 1.png",
+              "/brand/quality_restoration_20260401084732292 1.png",
+            ].map((src, i) => (
+              <motion.div
+                key={i}
+                variants={{ hidden: { opacity: 0, scale: 0.92 }, visible: { opacity: 1, scale: 1 } }}
+                transition={{ duration: 0.35 }}
+                className="flex items-center justify-center rounded-xl border bg-white p-5"
+                style={{ borderColor: "var(--border)", minHeight: 110 }}
+              >
+                <Image
+                  src={src}
+                  alt={`Brand logo ${i + 1}`}
+                  width={160}
+                  height={80}
+                  className="object-contain w-full h-auto"
+                  style={{ maxHeight: 72 }}
+                />
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+      </section>
 
       {/* ─── SECTION 6: BOOKING CTA ──────────────────────────── */}
       <section
