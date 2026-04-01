@@ -4,7 +4,7 @@ import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
-import { ChevronDown, ArrowRight, MessageCircle, Instagram, Check } from "lucide-react";
+import { ChevronDown, MessageCircle, Instagram, Check } from "lucide-react";
 import { brand, services, addons, formatPrice } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -234,9 +234,7 @@ export default function HomePage() {
       <section className="py-24 px-6" style={{ backgroundColor: "#F5F0EC" }}>
         <div className="max-w-[1600px] mx-auto">
           <SectionHeading
-            label="Karya Terbaru"
-            title="Hasil yang Bicara Sendiri"
-            subtitle="Setiap makeup adalah karya yang mencerminkan keunikan kamu."
+            title="Karya Terbaru"
             center
           />
           <motion.div
@@ -292,14 +290,61 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── SECTION 7: TERMS OF USE ─────────────────────────── */}
+      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
+        <div className="max-w-[760px] mx-auto">
+          <SectionHeading
+            label="Ketentuan"
+            title="Syarat & Ketentuan"
+            subtitle="Harap dibaca sebelum melakukan pemesanan."
+            center
+          />
+          <motion.ul
+            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="flex flex-col gap-3"
+          >
+            {[
+              "Durasi pengerjaan makeup maksimal 120 menit.",
+              "Apabila homeservice, mohon dibantu sediakan minimal 1 kursi, 1 meja untuk cermin & lighting.",
+              "Non homeservice, client wajib datang on time.",
+              "Free transport untuk wilayah Purwokerto Kota.",
+              "Fee transport mengikuti tarif ojek online.",
+              "Client dalam kondisi wajah bareface (tidak menggunakan apapun saat hari H) karena skinprep dari kami.",
+              "H-1 hindari penggunaan skincare/cream dokter.",
+              "Apabila hairdo, client boleh keramas tanpa menggunakan conditioner, hairmask/vitamin rambut lainnya. Usahakan rambut dalam keadaan kering saat makeup.",
+              "Keep tanggal = DP. Apabila client belum melakukan DP, tanggal masih dianggap available & kami berhak memberikan slot kepada calon client yang lain.",
+              "Apabila cancel dari client, DP hangus tidak dapat dikembalikan.",
+              "Pelunasan H-1 atau maksimal hari H setelah makeup selesai.",
+              "Reschedule maksimal 2 kali.",
+            ].map((item, i) => (
+              <motion.li
+                key={i}
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                transition={{ duration: 0.45, ease }}
+                className="flex items-start gap-4 text-sm leading-relaxed"
+                style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}
+              >
+                <span
+                  className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5"
+                  style={{ backgroundColor: "var(--accent)", fontFamily: "var(--font-sans)" }}
+                >
+                  {i + 1}
+                </span>
+                {item}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+      </section>
 
       {/* ─── SECTION 5b: BRAND LOGOS ─────────────────────────── */}
-      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
+      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-[1200px] mx-auto">
           <SectionHeading
-            label="Produk Pilihan"
             title="Brand yang Kami Gunakan"
-            subtitle="Serli menggunakan produk-produk makeup berkualitas tinggi untuk hasil yang tahan lama dan memukau."
             center
           />
 
@@ -368,7 +413,7 @@ export default function HomePage() {
               className="font-serif italic text-4xl md:text-5xl text-white mb-4 leading-tight"
               style={{ fontFamily: "var(--font-serif)" }}
             >
-              Siap Tampil Cantik?
+              Tanyakan Tanggal & Konsultasi Gratis
             </motion.h2>
             <motion.p
               variants={fadeUp}
@@ -413,55 +458,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 7: TERMS OF USE ─────────────────────────── */}
-      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg)" }}>
-        <div className="max-w-[760px] mx-auto">
-          <SectionHeading
-            label="Ketentuan"
-            title="Syarat & Ketentuan"
-            subtitle="Harap dibaca sebelum melakukan pemesanan."
-            center
-          />
-          <motion.ul
-            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
-            initial="hidden"
-            whileInView="visible"
-            viewport={{ once: true, margin: "-60px" }}
-            className="flex flex-col gap-3"
-          >
-            {[
-              "Durasi pengerjaan makeup maksimal 120 menit.",
-              "Apabila homeservice, mohon dibantu sediakan minimal 1 kursi, 1 meja untuk cermin & lighting.",
-              "Non homeservice, client wajib datang on time.",
-              "Free transport untuk wilayah Purwokerto Kota.",
-              "Fee transport mengikuti tarif ojek online.",
-              "Client dalam kondisi wajah bareface (tidak menggunakan apapun saat hari H) karena skinprep dari kami.",
-              "H-1 hindari penggunaan skincare/cream dokter.",
-              "Apabila hairdo, client boleh keramas tanpa menggunakan conditioner, hairmask/vitamin rambut lainnya. Usahakan rambut dalam keadaan kering saat makeup.",
-              "Keep tanggal = DP. Apabila client belum melakukan DP, tanggal masih dianggap available & kami berhak memberikan slot kepada calon client yang lain.",
-              "Apabila cancel dari client, DP hangus tidak dapat dikembalikan.",
-              "Pelunasan H-1 atau maksimal hari H setelah makeup selesai.",
-              "Reschedule maksimal 2 kali.",
-            ].map((item, i) => (
-              <motion.li
-                key={i}
-                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
-                transition={{ duration: 0.45, ease }}
-                className="flex items-start gap-4 text-sm leading-relaxed"
-                style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}
-              >
-                <span
-                  className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5"
-                  style={{ backgroundColor: "var(--accent)", fontFamily: "var(--font-sans)" }}
-                >
-                  {i + 1}
-                </span>
-                {item}
-              </motion.li>
-            ))}
-          </motion.ul>
-        </div>
-      </section>
     </>
   );
 }

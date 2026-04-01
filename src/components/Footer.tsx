@@ -6,8 +6,6 @@ const navLinks = [
   { href: "/", label: "Beranda" },
   { href: "/services", label: "Layanan & Harga" },
   { href: "/portfolio", label: "Portofolio" },
-  { href: "/about", label: "Tentang Kami" },
-  { href: "/testimoni", label: "Testimoni" },
   { href: "/booking", label: "Cara Booking" },
 ];
 

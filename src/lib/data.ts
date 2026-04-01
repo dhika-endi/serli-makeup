@@ -33,17 +33,11 @@ export const services = [
     expandablePackage: {
       name: "Engagement Package",
       price: 750000,
-      includes: ["Makeup by request", "Fake lashes 3D", "Free clean hijab"],
+      includes: ["Makeup by request", "Softlens", "Fake lashes 3D", "Free clean hijab"],
       includes2: {
         label: "Decoration by Keidecoration.id",
         items: ["Dekor 2–3 meter", "Kursi 2 pcs", "Handbouquet", "Ringbox", "Welcome sign"],
       },
-      notes: [
-        "Free transport area Purwokerto Kota",
-        "Lock tanggal = DP",
-        "Softlens +Rp 40.000",
-        "Cancel: DP hangus / tidak dapat dikembalikan",
-      ],
     },
   },
   {
@@ -90,7 +84,7 @@ export const addons = [
   },
   {
     name: "Press On Nails Premium",
-    price: null,
+    price: 50000,
     note: "Konfirmasi maksimal H-7",
     includes: [
       "Design by request",
