@@ -1,15 +1,10 @@
 "use client";
 
+import { useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
-import {
-  ChevronDown,
-  ArrowRight,
-  MessageCircle,
-  Instagram,
-  Check,
-} from "lucide-react";
+import { motion, useScroll, useTransform } from "framer-motion";
+import { ChevronDown, ArrowRight, MessageCircle, Instagram, Check } from "lucide-react";
 import { brand, services, addons, formatPrice } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeading from "@/components/SectionHeading";
@@ -17,19 +12,28 @@ import TikTokCarousel from "@/components/TikTokCarousel";
 import InstagramFeed from "@/components/InstagramFeed";
 import TestimonialImageCarousel from "@/components/TestimonialImageCarousel";
 
+const ease = [0.22, 1, 0.36, 1] as const;
+const fadeUp = { hidden: { opacity: 0, y: 36 }, visible: { opacity: 1, y: 0 } };
+const scaleUp = { hidden: { opacity: 0, scale: 0.93, y: 24 }, visible: { opacity: 1, scale: 1, y: 0 } };
+
 
 export default function HomePage() {
   const waUrl = `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(brand.whatsappMessage)}`;
+  const heroRef = useRef<HTMLElement>(null);
+  const { scrollYProgress: heroScroll } = useScroll({ target: heroRef, offset: ["start start", "end start"] });
+  const heroImgY = useTransform(heroScroll, [0, 1], ["0%", "18%"]);
 
   return (
     <>
       {/* ─── SECTION 1: HERO ─────────────────────────────────── */}
       <section
+        ref={heroRef}
         className="relative overflow-hidden"
         style={{ backgroundColor: "#F5F0EC", minHeight: "100svh" }}
       >
         {/* Photo — right side desktop, full bg mobile */}
         <div className="absolute inset-0 md:left-[42%]">
+        <motion.div className="absolute inset-0" style={{ y: heroImgY, top: "-12%", bottom: "-12%" }}>
           <Image
             src="/hero.jpeg"
             alt="Wedding Makeup by Serli Marselina"
@@ -54,6 +58,7 @@ export default function HomePage() {
                 "linear-gradient(to bottom, rgba(245,240,236,0.15) 0%, rgba(245,240,236,0.7) 55%, #F5F0EC 80%)",
             }}
           />
+        </motion.div>
         </div>
 
         {/* Content */}
@@ -152,14 +157,14 @@ export default function HomePage() {
           />
 
           <motion.div
-            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.1 } } }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
           >
-            {services.map((service) => (
-              <ServiceCard key={service.id} {...service} />
+            {services.map((service, i) => (
+              <ServiceCard key={service.id} {...service} index={i} />
             ))}
           </motion.div>
 
@@ -172,16 +177,17 @@ export default function HomePage() {
               Layanan Tambahan
             </p>
             <motion.div
-              variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+              variants={{ visible: { transition: { staggerChildren: 0.12 } } }}
               initial="hidden"
               whileInView="visible"
-              viewport={{ once: true }}
+              viewport={{ once: true, margin: "-60px" }}
               className="grid grid-cols-1 sm:grid-cols-3 gap-4"
             >
               {addons.map((addon, i) => (
                 <motion.div
                   key={i}
-                  variants={{ hidden: { opacity: 0, y: 16 }, visible: { opacity: 1, y: 0 } }}
+                  variants={scaleUp}
+                  transition={{ duration: 0.55, ease }}
                   className="p-5 rounded-[12px] border bg-white"
                   style={{ borderColor: "var(--border)" }}
                 >
@@ -226,14 +232,21 @@ export default function HomePage() {
 
       {/* ─── SECTION 3: PORTFOLIO PREVIEW ─────────────────────── */}
       <section className="py-24 px-6" style={{ backgroundColor: "#F5F0EC" }}>
-        <div className="max-w-[1200px] mx-auto">
+        <div className="max-w-[1600px] mx-auto">
           <SectionHeading
             label="Karya Terbaru"
             title="Hasil yang Bicara Sendiri"
             subtitle="Setiap makeup adalah karya yang mencerminkan keunikan kamu."
             center
           />
-          <InstagramFeed />
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease }}
+          >
+            <InstagramFeed />
+          </motion.div>
         </div>
       </section>
 
@@ -246,7 +259,14 @@ export default function HomePage() {
             subtitle="Tonton proses makeup dan hasil karya Serli langsung dari TikTok."
             center
           />
-          <TikTokCarousel />
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease }}
+          >
+            <TikTokCarousel />
+          </motion.div>
         </div>
       </section>
 
@@ -260,23 +280,15 @@ export default function HomePage() {
             center
           />
 
-          <TestimonialImageCarousel />
-
           <motion.div
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            viewport={{ once: true }}
-            className="mt-8 text-center"
+            initial={{ opacity: 0, scale: 0.97, y: 24 }}
+            whileInView={{ opacity: 1, scale: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease }}
           >
-            <Link
-              href="/testimoni"
-              className="inline-flex items-center gap-2 text-sm font-medium group"
-              style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
-            >
-              Lihat Semua Testimoni
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-            </Link>
+            <TestimonialImageCarousel />
           </motion.div>
+
         </div>
       </section>
 
@@ -292,10 +304,10 @@ export default function HomePage() {
           />
 
           <motion.div
-            variants={{ visible: { transition: { staggerChildren: 0.04 } } }}
+            variants={{ visible: { transition: { staggerChildren: 0.045 } } }}
             initial="hidden"
             whileInView="visible"
-            viewport={{ once: true }}
+            viewport={{ once: true, margin: "-60px" }}
             className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-6 gap-4"
           >
             {[
@@ -319,8 +331,8 @@ export default function HomePage() {
             ].map((src, i) => (
               <motion.div
                 key={i}
-                variants={{ hidden: { opacity: 0, scale: 0.92 }, visible: { opacity: 1, scale: 1 } }}
-                transition={{ duration: 0.35 }}
+                variants={{ hidden: { opacity: 0, scale: 0.85, y: 16 }, visible: { opacity: 1, scale: 1, y: 0 } }}
+                transition={{ duration: 0.45, ease }}
                 className="flex items-center justify-center rounded-xl border bg-white p-5"
                 style={{ borderColor: "var(--border)", minHeight: 110 }}
               >
@@ -345,25 +357,33 @@ export default function HomePage() {
       >
         <div className="max-w-2xl mx-auto">
           <motion.div
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.6 }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ staggerChildren: 0.14 }}
           >
-            <h2
+            <motion.h2
+              variants={{ hidden: { opacity: 0, y: 32, clipPath: "inset(0 0 100% 0)" }, visible: { opacity: 1, y: 0, clipPath: "inset(0 0 0% 0)" } }}
+              transition={{ duration: 0.7, ease }}
               className="font-serif italic text-4xl md:text-5xl text-white mb-4 leading-tight"
               style={{ fontFamily: "var(--font-serif)" }}
             >
               Siap Tampil Cantik?
-            </h2>
-            <p
+            </motion.h2>
+            <motion.p
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease }}
               className="text-white/75 text-lg mb-10"
               style={{ fontFamily: "var(--font-sans)" }}
             >
               Hubungi Serli sekarang untuk booking dan konsultasi gratis. Jadikan momen spesialmu
               tak terlupakan.
-            </p>
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
+            </motion.p>
+            <motion.div
+              variants={fadeUp}
+              transition={{ duration: 0.55, ease }}
+              className="flex flex-col sm:flex-row items-center justify-center gap-4"
+            >
               <a
                 href={waUrl}
                 target="_blank"
@@ -388,7 +408,7 @@ export default function HomePage() {
                 <Instagram size={16} />
                 Kunjungi Instagram
               </a>
-            </div>
+            </motion.div>
           </motion.div>
         </div>
       </section>
@@ -403,10 +423,10 @@ export default function HomePage() {
             center
           />
           <motion.ul
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
+            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
             className="flex flex-col gap-3"
           >
             {[
@@ -423,7 +443,13 @@ export default function HomePage() {
               "Pelunasan H-1 atau maksimal hari H setelah makeup selesai.",
               "Reschedule maksimal 2 kali.",
             ].map((item, i) => (
-              <li key={i} className="flex items-start gap-4 text-sm leading-relaxed" style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}>
+              <motion.li
+                key={i}
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                transition={{ duration: 0.45, ease }}
+                className="flex items-start gap-4 text-sm leading-relaxed"
+                style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}
+              >
                 <span
                   className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5"
                   style={{ backgroundColor: "var(--accent)", fontFamily: "var(--font-sans)" }}
@@ -431,7 +457,7 @@ export default function HomePage() {
                   {i + 1}
                 </span>
                 {item}
-              </li>
+              </motion.li>
             ))}
           </motion.ul>
         </div>

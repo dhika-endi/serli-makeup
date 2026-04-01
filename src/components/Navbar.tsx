@@ -11,7 +11,6 @@ const navLinks = [
   { href: "/", label: "Beranda" },
   { href: "/services", label: "Layanan" },
   { href: "/portfolio", label: "Portofolio" },
-  { href: "/testimoni", label: "Testimoni" },
   { href: "/booking", label: "Booking" },
 ];
 

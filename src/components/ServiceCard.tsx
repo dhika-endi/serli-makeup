@@ -24,6 +24,7 @@ interface ServiceCardProps {
   expandablePackage?: ExpandablePackage;
   badge: string | null;
   fullHeight?: boolean;
+  index?: number;
 }
 
 function CheckItem({ item, featured }: { item: string; featured: boolean }) {
@@ -40,7 +41,7 @@ function CheckItem({ item, featured }: { item: string; featured: boolean }) {
   );
 }
 
-export default function ServiceCard({ id, category, name, price, includes, includes2, notes, expandablePackage, badge }: ServiceCardProps) {
+export default function ServiceCard({ id, category, name, price, includes, includes2, notes, expandablePackage, badge, index = 0 }: ServiceCardProps) {
   const [expanded, setExpanded] = useState(false);
   const whatsappMessage = `Halo Serli, saya ingin booking ${expanded && expandablePackage ? expandablePackage.name : name}. Boleh saya tanya-tanya dulu?`;
   const waUrl = `https://wa.me/6287890536491?text=${encodeURIComponent(whatsappMessage)}`;
@@ -48,10 +49,10 @@ export default function ServiceCard({ id, category, name, price, includes, inclu
 
   return (
     <motion.div
-      variants={{
-        hidden: { opacity: 0, y: 20 },
-        visible: { opacity: 1, y: 0 },
-      }}
+      initial={{ opacity: 0, y: 32, scale: 0.97 }}
+      whileInView={{ opacity: 1, y: 0, scale: 1 }}
+      viewport={{ once: true, margin: "-60px" }}
+      transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
       className={`relative flex flex-col rounded-[12px] p-8${featured ? " sm:col-span-2" : ""}`}
       style={{
         backgroundColor: featured ? "var(--accent)" : "white",

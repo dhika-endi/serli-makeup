@@ -153,6 +153,56 @@ export default function BookingPage() {
         </div>
       </section>
 
+      {/* Terms */}
+      <section className="py-20 px-6" style={{ backgroundColor: "var(--bg)" }}>
+        <div className="max-w-[760px] mx-auto">
+          <SectionHeading
+            label="Ketentuan"
+            title="Syarat & Ketentuan"
+            subtitle="Harap dibaca sebelum melakukan pemesanan."
+            center
+          />
+          <motion.ul
+            variants={{ visible: { transition: { staggerChildren: 0.07 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, margin: "-60px" }}
+            className="flex flex-col gap-3"
+          >
+            {[
+              "Durasi pengerjaan makeup maksimal 120 menit.",
+              "Apabila homeservice, mohon dibantu sediakan minimal 1 kursi, 1 meja untuk cermin & lighting.",
+              "Non homeservice, client wajib datang on time.",
+              "Free transport untuk wilayah Purwokerto Kota.",
+              "Fee transport mengikuti tarif ojek online.",
+              "Client dalam kondisi wajah bareface (tidak menggunakan apapun saat hari H) karena skinprep dari kami.",
+              "H-1 hindari penggunaan skincare/cream dokter.",
+              "Apabila hairdo, client boleh keramas tanpa menggunakan conditioner, hairmask/vitamin rambut lainnya. Usahakan rambut dalam keadaan kering saat makeup.",
+              "Keep tanggal = DP. Apabila client belum melakukan DP, tanggal masih dianggap available & kami berhak memberikan slot kepada calon client yang lain.",
+              "Apabila cancel dari client, DP hangus tidak dapat dikembalikan.",
+              "Pelunasan H-1 atau maksimal hari H setelah makeup selesai.",
+              "Reschedule maksimal 2 kali.",
+            ].map((item, i) => (
+              <motion.li
+                key={i}
+                variants={{ hidden: { opacity: 0, x: -20 }, visible: { opacity: 1, x: 0 } }}
+                transition={{ duration: 0.45, ease: [0.22, 1, 0.36, 1] }}
+                className="flex items-start gap-4 text-sm leading-relaxed"
+                style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}
+              >
+                <span
+                  className="shrink-0 w-6 h-6 rounded-full flex items-center justify-center text-xs font-bold text-white mt-0.5"
+                  style={{ backgroundColor: "var(--accent)", fontFamily: "var(--font-sans)" }}
+                >
+                  {i + 1}
+                </span>
+                {item}
+              </motion.li>
+            ))}
+          </motion.ul>
+        </div>
+      </section>
+
       {/* Info + Map */}
       <section className="py-20 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-[1200px] mx-auto">
