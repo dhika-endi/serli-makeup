@@ -1,5 +1,21 @@
 export const services = [
   {
+    id: "special-event",
+    category: "Bridesmaid / Kondangan / Birthday",
+    name: "Special Event Makeup",
+    price: 150000,
+    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    badge: null,
+  },
+  {
+    id: "photoshoot",
+    category: "Maternity / Family Photoshoot",
+    name: "Photoshoot Makeup",
+    price: 200000,
+    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    badge: null,
+  },
+  {
     id: "graduation",
     category: "Wisuda",
     name: "Graduation Makeup",

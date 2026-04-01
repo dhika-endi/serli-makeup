@@ -8,22 +8,15 @@ import {
   ArrowRight,
   MessageCircle,
   Instagram,
-  Clock,
-  Users,
-  MapPin,
   Check,
 } from "lucide-react";
-import { brand, services, addons, portfolioImages, formatPrice } from "@/lib/data";
+import { brand, services, addons, formatPrice } from "@/lib/data";
 import ServiceCard from "@/components/ServiceCard";
 import SectionHeading from "@/components/SectionHeading";
 import TikTokCarousel from "@/components/TikTokCarousel";
+import InstagramFeed from "@/components/InstagramFeed";
 import TestimonialImageCarousel from "@/components/TestimonialImageCarousel";
 
-const fadeInUp = {
-  initial: { opacity: 0, y: 30 },
-  animate: { opacity: 1, y: 0 },
-  transition: { duration: 0.6, ease: "easeOut" },
-};
 
 export default function HomePage() {
   const waUrl = `https://wa.me/${brand.whatsapp}?text=${encodeURIComponent(brand.whatsappMessage)}`;
@@ -158,33 +151,17 @@ export default function HomePage() {
             center
           />
 
-          <div className="flex flex-col lg:flex-row gap-6 items-stretch">
-            {/* Regular packages — 2x2 grid */}
-            <motion.div
-              variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
-              initial="hidden"
-              whileInView="visible"
-              viewport={{ once: true }}
-              className="flex-1 grid grid-cols-1 sm:grid-cols-2 gap-5"
-            >
-              {services.filter((s) => s.badge === null).map((service) => (
-                <ServiceCard key={service.id} {...service} />
-              ))}
-            </motion.div>
-
-            {/* Featured package */}
-            <motion.div
-              initial={{ opacity: 0, y: 24 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.2 }}
-              className="w-full lg:w-[320px] shrink-0 flex flex-col"
-            >
-              {services.filter((s) => s.badge !== null).map((service) => (
-                <ServiceCard key={service.id} {...service} fullHeight />
-              ))}
-            </motion.div>
-          </div>
+          <motion.div
+            variants={{ visible: { transition: { staggerChildren: 0.08 } } }}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true }}
+            className="grid grid-cols-1 sm:grid-cols-2 gap-5 w-full"
+          >
+            {services.map((service) => (
+              <ServiceCard key={service.id} {...service} />
+            ))}
+          </motion.div>
 
           {/* Add-ons subsection */}
           <div className="mt-14">
@@ -256,56 +233,7 @@ export default function HomePage() {
             subtitle="Setiap makeup adalah karya yang mencerminkan keunikan kamu."
             center
           />
-
-          <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
-            {portfolioImages.slice(0, 6).map((img, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true }}
-                transition={{ duration: 0.5, delay: (i % 3) * 0.1 }}
-                className="relative break-inside-avoid rounded-xl overflow-hidden mb-4 group"
-              >
-                <Image
-                  src={img.src}
-                  alt={img.alt}
-                  width={600}
-                  height={i % 2 === 0 ? 700 : 500}
-                  className="w-full h-auto object-cover block"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                />
-                <div
-                  className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4"
-                  style={{ background: "linear-gradient(to top, rgba(44,24,16,0.65) 0%, transparent 60%)" }}
-                >
-                  <span
-                    className="text-xs font-semibold px-3 py-1 rounded-full text-white"
-                    style={{ backgroundColor: "var(--accent)" }}
-                  >
-                    {img.category}
-                  </span>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.5 }}
-            className="mt-10 text-center"
-          >
-            <Link
-              href="/portfolio"
-              className="inline-flex items-center gap-2 text-sm font-medium transition-colors duration-200 group"
-              style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
-            >
-              Lihat Semua Karya
-              <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform duration-200" />
-            </Link>
-          </motion.div>
+          <InstagramFeed />
         </div>
       </section>
 
@@ -352,97 +280,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── SECTION 5: ABOUT PREVIEW (hidden) ──────────────── */}
-      {false && <section className="py-24 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
-        <div className="max-w-[1200px] mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-center">
-            {/* Image */}
-            <motion.div
-              initial={{ opacity: 0, x: -30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-              className="relative h-[500px] md:h-[560px] rounded-2xl overflow-hidden"
-            >
-              <Image
-                src="/profile.jpg"
-                alt="Serli Marselina MUA"
-                fill
-                className="object-cover"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
-            </motion.div>
-
-            {/* Text */}
-            <motion.div
-              initial={{ opacity: 0, x: 30 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.7 }}
-            >
-              <span
-                className="text-xs font-semibold tracking-[0.25em] uppercase block mb-3"
-                style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
-              >
-                Tentang Serli
-              </span>
-              <h2
-                className="font-serif italic text-3xl md:text-4xl leading-tight mb-5"
-                style={{ color: "var(--text)", fontFamily: "var(--font-serif)" }}
-              >
-                MUA Lokal Purwokerto yang Berpengalaman
-              </h2>
-              <p
-                className="text-base leading-relaxed mb-8"
-                style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
-              >
-                {/* TODO: replace with real bio */}
-                Serli Marselina adalah makeup artist profesional yang berbasis di Purwokerto, Banyumas.
-                Dengan pengalaman lebih dari 4 tahun dan ratusan klien yang telah dilayani, Serli
-                menghadirkan makeup berkualitas tinggi dengan sentuhan personal yang hangat.
-              </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-3 gap-4 mb-8">
-                {[
-                  { icon: Clock, value: "4+", label: "Tahun Pengalaman" },
-                  { icon: Users, value: "500+", label: "Klien Puas" },
-                  { icon: MapPin, value: "✓", label: "Homeservice Tersedia" },
-                ].map((stat, i) => (
-                  <div key={i} className="text-center">
-                    <stat.icon
-                      size={22}
-                      className="mx-auto mb-2"
-                      style={{ color: "var(--accent)" }}
-                    />
-                    <div
-                      className="font-bold text-xl"
-                      style={{ color: "var(--text)", fontFamily: "var(--font-sans)" }}
-                    >
-                      {stat.value}
-                    </div>
-                    <div
-                      className="text-xs mt-0.5"
-                      style={{ color: "var(--text-muted)", fontFamily: "var(--font-sans)" }}
-                    >
-                      {stat.label}
-                    </div>
-                  </div>
-                ))}
-              </div>
-
-              <Link
-                href="/about"
-                className="inline-flex items-center gap-2 text-sm font-medium group"
-                style={{ color: "var(--accent)", fontFamily: "var(--font-sans)" }}
-              >
-                Kenali Saya Lebih Dekat
-                <ArrowRight size={16} className="group-hover:translate-x-1 transition-transform" />
-              </Link>
-            </motion.div>
-          </div>
-        </div>
-      </section>}
 
       {/* ─── SECTION 5b: BRAND LOGOS ─────────────────────────── */}
       <section className="py-20 px-6" style={{ backgroundColor: "var(--bg-card)" }}>
@@ -466,7 +303,6 @@ export default function HomePage() {
               "/brand/quality_restoration_20260401082139337 1.png",
               "/brand/quality_restoration_20260401082447678 1.png",
               "/brand/quality_restoration_20260401082544086 1.png",
-              "/brand/quality_restoration_20260401082747574 1.png",
               "/brand/quality_restoration_20260401082809209 1.png",
               "/brand/quality_restoration_20260401082955521 1.png",
               "/brand/quality_restoration_20260401083100917 1.png",

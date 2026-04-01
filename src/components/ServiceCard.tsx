@@ -25,7 +25,7 @@ export default function ServiceCard({ id, category, name, price, includes, badge
         hidden: { opacity: 0, y: 20 },
         visible: { opacity: 1, y: 0 },
       }}
-      className={`relative flex flex-col rounded-[12px] p-8${fullHeight ? " h-full" : ""}`}
+      className={`relative flex flex-col rounded-[12px] p-8${featured ? " sm:col-span-2" : ""}`}
       style={{
         backgroundColor: featured ? "var(--accent)" : "white",
         border: featured ? "none" : "1px solid var(--border)",
@@ -35,11 +35,7 @@ export default function ServiceCard({ id, category, name, price, includes, badge
       {badge && (
         <span
           className="self-start text-xs font-semibold px-3 py-1 rounded-full mb-4 whitespace-nowrap"
-          style={{
-            backgroundColor: "rgba(255,255,255,0.2)",
-            color: "white",
-            fontFamily: "var(--font-sans)",
-          }}
+          style={{ backgroundColor: "rgba(255,255,255,0.2)", color: "white", fontFamily: "var(--font-sans)" }}
         >
           {badge}
         </span>
@@ -58,8 +54,6 @@ export default function ServiceCard({ id, category, name, price, includes, badge
       >
         {formatPrice(price)}
       </div>
-
-      {featured && <div className="w-full h-px mb-5" style={{ backgroundColor: "rgba(255,255,255,0.2)" }} />}
 
       <ul className="flex flex-col gap-2.5 mb-7 flex-1">
         {includes.map((item, i) => (
@@ -82,7 +76,7 @@ export default function ServiceCard({ id, category, name, price, includes, badge
         className="flex items-center justify-center gap-2 py-3 px-6 rounded-xl text-sm font-semibold transition-opacity hover:opacity-90"
         style={{
           backgroundColor: featured ? "white" : "transparent",
-          color: featured ? "var(--accent)" : "var(--accent)",
+          color: "var(--accent)",
           border: featured ? "none" : "2px solid var(--accent)",
           fontFamily: "var(--font-sans)",
         }}
