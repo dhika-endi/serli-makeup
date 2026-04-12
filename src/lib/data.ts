@@ -4,7 +4,7 @@ export const services = [
     category: "Bridesmaid / Kondangan / Birthday",
     name: "Special Event Makeup",
     price: 150000,
-    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    includes: ["Makeup", "Fake lashes 3D"],
     badge: null,
   },
   {
