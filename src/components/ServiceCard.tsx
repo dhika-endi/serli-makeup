@@ -23,6 +23,7 @@ interface ServiceCardProps {
   notes?: string[];
   expandablePackage?: ExpandablePackage;
   badge: string | null;
+  fullWidth?: boolean;
   fullHeight?: boolean;
   index?: number;
 }
@@ -41,7 +42,7 @@ function CheckItem({ item, featured }: { item: string; featured: boolean }) {
   );
 }
 
-export default function ServiceCard({ id, category, name, price, includes, includes2, notes, expandablePackage, badge, index = 0 }: ServiceCardProps) {
+export default function ServiceCard({ id, category, name, price, includes, includes2, notes, expandablePackage, badge, fullWidth, index = 0 }: ServiceCardProps) {
   const [expanded, setExpanded] = useState(false);
   const whatsappMessage = `Halo Serli, saya ingin booking ${expanded && expandablePackage ? expandablePackage.name : name}. Boleh saya tanya-tanya dulu?`;
   const waUrl = `https://wa.me/6287890536491?text=${encodeURIComponent(whatsappMessage)}`;
@@ -53,7 +54,7 @@ export default function ServiceCard({ id, category, name, price, includes, inclu
       whileInView={{ opacity: 1, y: 0, scale: 1 }}
       viewport={{ once: true, margin: "-60px" }}
       transition={{ duration: 0.55, ease: [0.22, 1, 0.36, 1], delay: index * 0.08 }}
-      className={`relative flex flex-col rounded-[12px] p-8${featured ? " sm:col-span-2" : ""}`}
+      className={`relative flex flex-col rounded-[12px] p-8${featured || fullWidth ? " sm:col-span-2" : ""}`}
       style={{
         backgroundColor: featured ? "var(--accent)" : "white",
         border: featured ? "none" : "1px solid var(--border)",

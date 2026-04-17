@@ -1,34 +1,31 @@
 export const services = [
   {
     id: "special-event",
-    category: "Bridesmaid / Kondangan / Birthday",
+    category: "Bridesmaid / Photoshoot / Kondangan / Birthday / Lomba",
     name: "Special Event Makeup",
-    price: 150000,
-    includes: ["Makeup", "Fake lashes 3D"],
+    price: 175000,
+    includes: ["Makeup", "Fake lashes", "Homeservice minimal 2 orang"],
     badge: null,
-  },
-  {
-    id: "photoshoot",
-    category: "Maternity / Family Photoshoot",
-    name: "Photoshoot Makeup",
-    price: 200000,
-    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
-    badge: null,
+    expandablePackage: {
+      name: "Special Event Premium",
+      price: 210000,
+      includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    },
   },
   {
     id: "graduation",
     category: "Wisuda",
     name: "Graduation Makeup",
     price: 250000,
-    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab", "Free pemasangan toga"],
+    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free pemasangan toga"],
     badge: null,
   },
   {
     id: "engagement",
     category: "Lamaran",
     name: "Engagement Makeup",
-    price: 275000,
-    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    price: 300000,
+    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free softlens"],
     badge: null,
     expandablePackage: {
       name: "Engagement Package",
@@ -45,7 +42,7 @@ export const services = [
     category: "Foto Prewed",
     name: "Prewedding Makeup",
     price: 300000,
-    includes: ["Makeup", "Fake lashes 3D", "Free clean hijab"],
+    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free softlens"],
     badge: null,
   },
   {
@@ -55,6 +52,7 @@ export const services = [
     price: 800000,
     includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do"],
     badge: null,
+    fullWidth: true,
   },
   {
     id: "wedding-gold",
