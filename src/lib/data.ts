@@ -16,7 +16,7 @@ export const services = [
     id: "graduation",
     category: "Wisuda",
     name: "Graduation Makeup",
-    price: 270000,
+    price: 250000,
     includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free pemasangan toga", "Free Transport area Purwokerto"],
     badge: null,
   },
