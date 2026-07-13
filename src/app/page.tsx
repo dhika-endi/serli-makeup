@@ -146,6 +146,24 @@ export default function HomePage() {
         </motion.div>
       </section>
 
+      {/* ─── SECTION 3: PORTFOLIO PREVIEW ─────────────────────── */}
+      <section className="py-24 px-6" style={{ backgroundColor: "#F5F0EC" }}>
+        <div className="max-w-[1600px] mx-auto">
+          <SectionHeading
+            title="Karya Terbaru"
+            center
+          />
+          <motion.div
+            initial={{ opacity: 0, y: 32 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true, margin: "-60px" }}
+            transition={{ duration: 0.65, ease }}
+          >
+            <InstagramFeed />
+          </motion.div>
+        </div>
+      </section>
+
       {/* ─── SECTION 2: SERVICES PREVIEW ─────────────────────── */}
       <section className="py-24 md:py-24 px-6" style={{ backgroundColor: "var(--bg)" }}>
         <div className="max-w-[1200px] mx-auto">
@@ -227,24 +245,6 @@ export default function HomePage() {
               ))}
             </motion.div>
           </div>
-        </div>
-      </section>
-
-      {/* ─── SECTION 3: PORTFOLIO PREVIEW ─────────────────────── */}
-      <section className="py-24 px-6" style={{ backgroundColor: "#F5F0EC" }}>
-        <div className="max-w-[1600px] mx-auto">
-          <SectionHeading
-            title="Karya Terbaru"
-            center
-          />
-          <motion.div
-            initial={{ opacity: 0, y: 32 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-60px" }}
-            transition={{ duration: 0.65, ease }}
-          >
-            <InstagramFeed />
-          </motion.div>
         </div>
       </section>
 
