@@ -4,7 +4,7 @@ export const services = [
     category: "Bridesmaid / Photoshoot / Kondangan / Birthday / Lomba",
     name: "Special Event Makeup",
     price: 175000,
-    includes: ["Makeup", "Fake lashes", "Homeservice minimal 2 orang"],
+    includes: ["Makeup", "Fake lashes", "Homeservice minimal 2 orang", "Free Transport area Purwokerto"],
     badge: null,
     expandablePackage: {
       name: "Special Event Premium",
@@ -25,7 +25,7 @@ export const services = [
     category: "Lamaran",
     name: "Engagement Makeup",
     price: 300000,
-    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free softlens"],
+    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free softlens", "Free Transport area Purwokerto"],
     badge: null,
     expandablePackage: {
       name: "Engagement Package",
@@ -42,7 +42,7 @@ export const services = [
     category: "Foto Prewed",
     name: "Prewedding Makeup",
     price: 300000,
-    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free softlens"],
+    includes: ["Makeup", "Fake lashes 3D", "Request look makeup (signature serlimarselina.makeup)", "Free clean hijab", "Free softlens", "Free Transport area Purwokerto"],
     badge: null,
   },
   {
@@ -50,7 +50,7 @@ export const services = [
     category: "Akad Nikah",
     name: "Wedding Makeup",
     price: 800000,
-    includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do"],
+    includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do", "Free Transport area Purwokerto"],
     badge: null,
     fullWidth: true,
   },
@@ -59,7 +59,7 @@ export const services = [
     category: "Akad Nikah",
     name: "Wedding Makeup",
     price: 1300000,
-    includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do", "Rent attire akad 1x", "Hena art", "Free rent acc solo putri"],
+    includes: ["Makeup by request", "Softlens", "Premium fake nails", "Hijab / hair do", "Rent attire akad 1x", "Hena art", "Free rent acc solo putri", "Free Transport area Purwokerto"],
     badge: "Paket Spesial",
   },
 ];
@@ -91,6 +91,7 @@ export const addons = [
 ];
 
 export const terms = [
+  "Free transport untuk area Purwokerto",
   "Harga belum termasuk biaya transport jika homeservice",
   "Tambahan softlens Rp 40.000 (untuk softlens minus, konfirmasi max H-7)",
   "Reschedule H-3 menyesuaikan jadwal owner",

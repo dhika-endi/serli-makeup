@@ -307,6 +307,7 @@ export default function HomePage() {
             className="flex flex-col gap-3"
           >
             {[
+              "Free transport untuk area Purwokerto.",
               "Durasi pengerjaan makeup maksimal 120 menit.",
               "Apabila homeservice, mohon dibantu sediakan minimal 1 kursi, 1 meja untuk cermin & lighting.",
               "Non homeservice, client wajib datang on time.",
